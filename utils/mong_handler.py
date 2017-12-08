@@ -14,7 +14,7 @@ def get_db_by_name(db_name):
     else:
         return None
 
-def get_collection(db_name='gaga_logic',table_name=''):
+def get_collection(db_name,table_name):
     db = get_db_by_name(db_name)
     if db and table_name:
         collection = db[table_name]

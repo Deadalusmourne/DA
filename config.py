@@ -23,4 +23,9 @@ class AppConfig(Config):
 
 config = {
     'configa': AppConfig,
+    'default': AppConfig
+}
+
+DB_CHOICE = {
+    0: 'logic'
 }
