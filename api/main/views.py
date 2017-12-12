@@ -11,7 +11,7 @@ from utils import mong_handler
 def index():
     return 'hello world'
 
-@main.route('/write_row_data', methods=['POST'])
+@main.route('/write_row_data/', methods=['POST'])
 def write_row_data():
     post_param = request.json() or {}
     db_type = post_param['db_type']
@@ -23,13 +23,13 @@ def write_row_data():
         data = [data, ]
 
 
-@main.route('/fast_write', methods=['POST'])
+@main.route('/fast_write/', methods=['POST'])
 def fast_write():
     req = {'success': 0, 'resp': {}, 'error': '', 'trace_back': ''}
     post_param = request.json() or {}
     try:
         db_type = post_param['db_type']
-        data = post_param['data']
+        data = post_param['data_list']
         db_name = config.DB_CHOICE[db_type]
         coll_name = post_param['coll_name']
     except KeyError as e:

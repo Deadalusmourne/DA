@@ -1,9 +1,16 @@
+# 虚拟环境设置
 设置flask虚拟环境：防止模块的更新影响程序。
-pip3 install virtualenv
+apt install virtualenv
 mkdir venv  创建一个文件夹
 virtualenv dota  创建虚拟环境dota，这里的dota相当于另一个python
 source dota/bin/activate 激活当前的虚拟环境
 pip3 install -r requirements.txt 将现有的模块安装在环境中
-
+退出
 deactivate  退出到现有环境
 source venv/dota/bin/activate  再次进入
+
+
+# supervisor 配置
+1./etc/supervisor/conf.d/ 下载好之后再目录中配置conf文件。
+2.supervisorctl reload
+3.supervisorctl start logic # logic是conf中配置名称
