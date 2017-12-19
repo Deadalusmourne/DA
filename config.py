@@ -18,7 +18,7 @@ class Config:
 
 
 class AppConfig(Config):
-    DEEBUG = True
+    DEBUG = True
 
 
 config = {

@@ -14,3 +14,10 @@ source venv/dota/bin/activate  再次进入
 1./etc/supervisor/conf.d/ 下载好之后再目录中配置conf文件。
 2.supervisorctl reload
 3.supervisorctl start logic # logic是conf中配置名称
+
+
+
+# git make it hard
+git fetch --all
+git reset --hard origin/master
+git pull origin master

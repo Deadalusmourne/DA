@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Time    : 2017/12/7 
 # __author__: caoge
-from flask import request, jsonify
+from flask import request, jsonify, json
 from . import main
 import config
 from utils import mong_handler
@@ -13,7 +13,7 @@ def index():
 
 @main.route('/write_row_data/', methods=['POST'])
 def write_row_data():
-    post_param = request.json() or {}
+    post_param = request.get_data() or {}
     db_type = post_param['db_type']
     data = post_param['data']
     db_name = config.DB_CHOICE[db_type]
@@ -26,8 +26,9 @@ def write_row_data():
 @main.route('/fast_write/', methods=['POST'])
 def fast_write():
     req = {'success': 0, 'resp': {}, 'error': '', 'trace_back': ''}
-    post_param = request.json() or {}
+    post_param = request.get_data()
     try:
+        post_param = json.loads(post_param)
         db_type = post_param['db_type']
         data = post_param['data_list']
         db_name = config.DB_CHOICE[db_type]
@@ -44,4 +45,5 @@ def fast_write():
     req_ids = [str(x) for x in ids_b]
     req['success'] = 1
     req['resp']['req_ids'] = req_ids
+    print(req)
     return jsonify(req)
